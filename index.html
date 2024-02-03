@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your App Landing Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+    <style>
+        html {
+            --s: 100px;
+            /* control the size */
+
+            --_g: radial-gradient(#F4EAD5 31%, #0000 32%);
+            --_l: radial-gradient(#594F4F 15%, #0000 16%);
+            background: var(--_l), var(--_l), var(--_g), var(--_g), #45ADA8;
+            background-position: 0 0, var(--s) var(--s);
+            background-size: calc(2*var(--s)) calc(2*var(--s));
+            animation:
+                g3-1 2s cubic-bezier(0.5, 92, 0.5, -92) infinite,
+                g3-2 2s cubic-bezier(0.5, 92, 0.5, -92) infinite -.5s;
+        }
+
+        @keyframes g3-1 {
+            to {
+                background-position-x: -.25px, calc(var(--s) - 1px), -.5px, calc(var(--s) - .5px)
+            }
+        }
+
+        @keyframes g3-2 {
+            to {
+                background-position-y: -.25px, calc(var(--s) - 1px), .25px, calc(var(--s) - .5px)
+            }
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .app-link {
+            box-shadow: #2980b9;
+            margin: 30px;
+            padding: 30px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+            background-color: #3498db;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+        }
+
+        .app-link p{
+            font-size: small;
+            max-width: 250px;
+        }
+
+        .app-link:hover {
+            background-color: #2980b9;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Zbysulak's awesome apps</h1>
+
+    <div class="container">
+        <a href="pushups/" class="app-link">
+            <i class="mdi mdi-dumbbell"></i><span>Pushup Challenge</span>
+            <p>Challenge yourself with some pushups every few minutes</p>
+        </a>
+        <a href="logik/" class="app-link">
+            <i class="mdi mdi-gamepad-variant"></i><span>logik</span>
+            <p>Can you guess colors and their order?</p>
+        </a>
+        <!-- Add more app links as needed -->
+    </div>
+
+    <!-- Feel free to add more content or customize as needed -->
+
+</body>
+
+</html>
