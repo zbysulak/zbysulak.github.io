@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Pushup Counter</title>
+</head>
+
+<body>
+    <div id="app" :style="{ backgroundColor: backgroundColor }">
+        <div class="container">
+            <h1>Pushup Challenge</h1>
+            <p>You have to make {{ pushups }} pushups (or any other excercise you want) every {{ interval }} minutes for
+                duration of {{ totalTime }} hours.</p>
+            <div v-show="!counting">
+                <div class="form-group">
+                    <label for="interval">Interval (minutes): </label>
+                    <input type="number" id="interval" v-model="interval" min="1" step="1">
+                </div>
+                <div class="form-group">
+                    <label for="pushups">Pushups per interval: </label>
+                    <input type="number" id="pushups" v-model="pushups" min="1" step="1">
+                </div>
+                <div class="form-group">
+                    <label for="totalTime">Total time (hours): </label>
+                    <input type="number" id="totalTime" v-model="totalTime" min="1" step="1">
+                </div>
+                <button @click="startCounter">Start</button>
+            </div>
+            <div v-show="counting">
+                <h2>{{progressInfo}}</h2>
+                <button @click="increasePushups(1)">Add 1</button>
+                <button v-if="pushups/2>5" @click="increasePushups(5)">Add 5</button>
+                <button @click="increasePushups(pushups)">Add {{ pushups }}</button>
+                <p>Total Pushups: {{ pushupsDone }} / {{ pushupsToDo }}</p>
+                <p>Time Left in Current Interval: {{ formatTime(currentRemainingTime) }}</p>
+                <p>Challenge ends at {{ challengeEnd.toLocaleTimeString() }}</p>
+                <button @click="restart" class="bad">Restart</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
