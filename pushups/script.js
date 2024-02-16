@@ -38,6 +38,7 @@ new Vue({
         startCounter() {
             this.challengeStart = new Date();
             this._start();
+            this._playSound();
             this.save();
         },
         _start() {
@@ -58,6 +59,7 @@ new Vue({
                 if (this.currentRemainingTime <= 0) {
                     this.currentRemainingTime = intervalMilliseconds;
                     this.pushupsToDo += this.pushups;
+                    this._playSound();
                 }
 
                 if (new Date() > this.challengeEnd) {
@@ -74,8 +76,12 @@ new Vue({
             this.pushups = 10;
             this.totalTime = 7;
         },
+        _playSound(){
+            const audio = new Audio("shot.mp3");
+            audio.play();
+        },
         increasePushups(n) {
-            this.pushupsDone += +n;
+            this.pushupsDone += n;
             this.save();
         },
         formatTime(ms) {
@@ -103,6 +109,7 @@ new Vue({
         },
         recover(data) {
             this.challengeStart = new Date(data.challengeStart);
+            this.totalTime = data.totalTime;
             if (this.challengeEnd < new Date()) {
                 this._setDefault();
             } else {
